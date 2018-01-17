@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C802CCDD200EF11400171DCE /* TextFieldCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C802CCDC200EF11400171DCE /* TextFieldCollectionViewCell.swift */; };
 		C865844B20099622007E536B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C865844A20099622007E536B /* AppDelegate.swift */; };
 		C865844D20099622007E536B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C865844C20099622007E536B /* ViewController.swift */; };
 		C865845020099622007E536B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C865844E20099622007E536B /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C802CCDC200EF11400171DCE /* TextFieldCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCollectionViewCell.swift; sourceTree = "<group>"; };
 		C865844720099622007E536B /* EmojiPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmojiPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C865844A20099622007E536B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C865844C20099622007E536B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				C865845C20099631007E536B /* Supporting Files */,
 				C865844C20099622007E536B /* ViewController.swift */,
 				C865844E20099622007E536B /* Main.storyboard */,
+				C802CCDC200EF11400171DCE /* TextFieldCollectionViewCell.swift */,
 				C865845D2009979F007E536B /* EmojiCollectionViewCell.swift */,
 				C865845620099622007E536B /* Info.plist */,
 			);
@@ -147,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C802CCDD200EF11400171DCE /* TextFieldCollectionViewCell.swift in Sources */,
 				C865844D20099622007E536B /* ViewController.swift in Sources */,
 				C865845E2009979F007E536B /* EmojiCollectionViewCell.swift in Sources */,
 				C865844B20099622007E536B /* AppDelegate.swift in Sources */,

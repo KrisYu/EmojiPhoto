@@ -9,8 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController, UIDropInteractionDelegate,
-    UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDragDelegate,
+    UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDragDelegate, UICollectionViewDropDelegate,
 UICollectionViewDelegateFlowLayout {
+
 
     
     @IBOutlet weak var dropZone: UIView! {
@@ -55,8 +56,10 @@ UICollectionViewDelegateFlowLayout {
             emojiCollectionView.dataSource = self
             emojiCollectionView.delegate = self
             emojiCollectionView.dragDelegate = self
+            emojiCollectionView.dropDelegate = self
             // https://stackoverflow.com/questions/45684720/dragging-from-a-collection-view-works-on-the-ipad-but-not-on-the-iphone-how-co
             emojiCollectionView.dragInteractionEnabled = true
+            
 
         }
     }
@@ -136,17 +139,31 @@ UICollectionViewDelegateFlowLayout {
             inputCell.textField.becomeFirstResponder()
         }
     }
+    
+    
     // MARK:  - drag delegate
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        session.localContext = collectionView
+        return dragItems(at: indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, itemsForAddingTo session: UIDragSession, at indexPath: IndexPath, point: CGPoint) -> [UIDragItem] {
+        return dragItems(at: indexPath)
+    }
+    
+    
+    private func dragItems(at indexPath: IndexPath) -> [UIDragItem] {
         // disable dragging when adding emoji
-        if !addingEmoji {
-            let attributedString = NSAttributedString(string: emojis[indexPath.item], attributes: [.font:font])
-            let item = UIDragItem(itemProvider: NSItemProvider(object: attributedString))
-            return [item]
+        if !addingEmoji, let attributedString = (emojiCollectionView.cellForItem(at: indexPath) as? EmojiCollectionViewCell)?.label.attributedText {
+            let dragItem = UIDragItem(itemProvider: NSItemProvider(object: attributedString))
+            dragItem.localObject = attributedString
+            return [dragItem]
         } else {
             return []
         }
     }
+    
+    
     
     // MARK: - drop delegate
     
@@ -162,7 +179,7 @@ UICollectionViewDelegateFlowLayout {
         // Dispose of any resources that can be recreated.
     }
     
-    // MAKR: - adding emoji
+    // MARK: - adding emoji
     
     private var addingEmoji = false
     
@@ -171,6 +188,43 @@ UICollectionViewDelegateFlowLayout {
         emojiCollectionView.reloadSections(IndexSet(integer: 0))
     }
 
+    
+    // MARK: - drop
+    
+    func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool {
+        return session.canLoadObjects(ofClass: NSAttributedString.self)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
+        if let indexPath = destinationIndexPath, indexPath.section == 1 {
+            let isSelf = (session.localDragSession?.localContext as? UICollectionView) == collectionView
+            return UICollectionViewDropProposal(operation: isSelf ? .move : .copy, intent: .insertAtDestinationIndexPath)
+        } else {
+            return UICollectionViewDropProposal(operation: .cancel)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        performDropWith coordinator: UICollectionViewDropCoordinator) {
+        let destinationIndexPath = coordinator.destinationIndexPath ?? IndexPath(item: 0, section: 0)
+        for item in coordinator.items {
+            if let sourceIndexPath = item.sourceIndexPath {
+                if let attributedString = item.dragItem.localObject as? NSAttributedString {
+                    print("what")
+                    collectionView.performBatchUpdates({
+                        emojis.remove(at: sourceIndexPath.item)
+                        emojis.insert(attributedString.string, at: destinationIndexPath.item)
+                        
+                        collectionView.deleteItems(at: [sourceIndexPath])
+                        collectionView.insertItems(at: [destinationIndexPath])
+                    })
+                    coordinator.drop(item.dragItem, toItemAt: destinationIndexPath)
+                }
+                
+            }
+        }
+        
+    }
 
 }
 

@@ -8,11 +8,22 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIDropInteractionDelegate,
+class EmojiViewController: UIViewController, UIDropInteractionDelegate,
     UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDragDelegate, UICollectionViewDropDelegate,
 UICollectionViewDelegateFlowLayout {
 
 
+    var image: UIImage?
+    
+    @IBOutlet weak var imageView: UIImageView!
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        imageView.image = image
+        imageView.contentMode = .scaleAspectFit
+    }
+    
     
     @IBOutlet weak var dropZone: UIView! {
         didSet {

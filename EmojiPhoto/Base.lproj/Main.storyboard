@@ -97,44 +97,32 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mD4-fQ-bzO">
-                                <rect key="frame" x="16" y="164" width="343" height="483"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YUY-fF-WlN">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="483"/>
-                                    </imageView>
-                                </subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Grl-sB-ex1" customClass="EmojiArtView" customModule="EmojiPhoto" customModuleProvider="target">
+                                <rect key="frame" x="16" y="160" width="343" height="447"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="YUY-fF-WlN" firstAttribute="top" secondItem="mD4-fQ-bzO" secondAttribute="top" id="DdU-oA-4u7"/>
-                                    <constraint firstAttribute="trailing" secondItem="YUY-fF-WlN" secondAttribute="trailing" id="itn-RW-9oE"/>
-                                    <constraint firstAttribute="bottom" secondItem="YUY-fF-WlN" secondAttribute="bottom" id="l8y-ew-1DW"/>
-                                    <constraint firstItem="YUY-fF-WlN" firstAttribute="leading" secondItem="mD4-fQ-bzO" secondAttribute="leading" id="rjC-yE-tcZ"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Grl-sB-ex1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="04c-x1-EUA"/>
                             <constraint firstItem="LSk-Rf-9PE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="AeF-z4-Kpe"/>
-                            <constraint firstItem="mD4-fQ-bzO" firstAttribute="top" secondItem="LSk-Rf-9PE" secondAttribute="bottom" constant="20" id="E8u-zO-0Uf"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mD4-fQ-bzO" secondAttribute="trailing" constant="16" id="GM7-cV-Nb0"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mD4-fQ-bzO" secondAttribute="bottom" constant="20" id="UAj-4l-WJe"/>
-                            <constraint firstItem="mD4-fQ-bzO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="YsU-mX-8rZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Grl-sB-ex1" secondAttribute="bottom" constant="60" id="DMG-mB-rgj"/>
                             <constraint firstItem="LSk-Rf-9PE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Z4Y-gz-GwW"/>
                             <constraint firstItem="LSk-Rf-9PE" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="evc-tQ-TQw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Grl-sB-ex1" secondAttribute="trailing" constant="16" id="jVy-37-xRZ"/>
+                            <constraint firstItem="Grl-sB-ex1" firstAttribute="top" secondItem="LSk-Rf-9PE" secondAttribute="bottom" constant="16" id="uFF-kS-JEz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="GP0-sn-7e0"/>
                     <connections>
-                        <outlet property="dropZone" destination="mD4-fQ-bzO" id="RPV-Tx-csS"/>
+                        <outlet property="emojiArtView" destination="Grl-sB-ex1" id="nit-1h-g3q"/>
                         <outlet property="emojiCollectionView" destination="LSk-Rf-9PE" id="FA3-Gg-gn3"/>
-                        <outlet property="imageView" destination="YUY-fF-WlN" id="USo-Jx-7RV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="767" y="204"/>
+            <point key="canvasLocation" x="765.60000000000002" y="203.74812593703149"/>
         </scene>
         <!--Photo Library View Controller-->
         <scene sceneID="KG1-h1-eQ1">

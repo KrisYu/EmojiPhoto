@@ -8,58 +8,24 @@
 
 import UIKit
 
-class EmojiViewController: UIViewController, UIDropInteractionDelegate,
+class EmojiViewController: UIViewController,
     UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDragDelegate, UICollectionViewDropDelegate,
 UICollectionViewDelegateFlowLayout {
 
 
-    var image: UIImage?
+    @IBOutlet weak var emojiArtView: EmojiArtView!
     
-    @IBOutlet weak var imageView: UIImageView!
+    var image: UIImage?
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        imageView.image = image
-        imageView.contentMode = .scaleAspectFit
-    }
-    
-    
-    @IBOutlet weak var dropZone: UIView! {
-        didSet {
-            dropZone.addInteraction(UIDropInteraction(delegate: self))
+        if image != nil {
+            emojiArtView.backgroundImage = image
         }
     }
-    
-    
-    func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
-        return session.canLoadObjects(ofClass: NSAttributedString.self)
-    }
-    
-    
-    func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
-        return UIDropProposal(operation: .copy)
-    }
-    
-    func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
-        session.loadObjects(ofClass: NSAttributedString.self) { providers in
-            let dropPoint = session.location(in: self.dropZone)
-            for attributedString in providers as? [NSAttributedString] ?? [] {
-                self.addLabel(with: attributedString, centeredAt: dropPoint)
-            }
-        }
-    }
-    
-    
-    func addLabel(with attributedString: NSAttributedString, centeredAt point: CGPoint) {
-        let label = UILabel()
-        label.backgroundColor = .clear
-        label.attributedText = attributedString
-        label.sizeToFit()
-        label.center = point
-        dropZone.addSubview(label)
-    }
-    
+
+
     var emojis = "😀🎁✈️🎱🍎🐶🐝☕️🎼🚲♣️👨‍🎓✏️🌈🤡🎓👻☎️".map { String($0) }
 
     @IBOutlet weak var emojiCollectionView: UICollectionView! {

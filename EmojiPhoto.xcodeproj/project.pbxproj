@@ -15,6 +15,7 @@
 		C865845520099622007E536B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C865845320099622007E536B /* LaunchScreen.storyboard */; };
 		C865845E2009979F007E536B /* EmojiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C865845D2009979F007E536B /* EmojiCollectionViewCell.swift */; };
 		C887C7D820157F2B00EC681D /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C887C7D720157F2B00EC681D /* PhotoLibraryViewController.swift */; };
+		C887C7DC2017017000EC681D /* EmojiArtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C887C7DB2017017000EC681D /* EmojiArtView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		C865845620099622007E536B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C865845D2009979F007E536B /* EmojiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewCell.swift; sourceTree = "<group>"; };
 		C887C7D720157F2B00EC681D /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
+		C887C7DB2017017000EC681D /* EmojiArtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiArtView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		C865844920099622007E536B /* EmojiPhoto */ = {
 			isa = PBXGroup;
 			children = (
+				C887C7DB2017017000EC681D /* EmojiArtView.swift */,
 				C865845C20099631007E536B /* Supporting Files */,
 				C865844E20099622007E536B /* Main.storyboard */,
 				C887C7D720157F2B00EC681D /* PhotoLibraryViewController.swift */,
@@ -158,6 +161,7 @@
 				C887C7D820157F2B00EC681D /* PhotoLibraryViewController.swift in Sources */,
 				C865845E2009979F007E536B /* EmojiCollectionViewCell.swift in Sources */,
 				C865844B20099622007E536B /* AppDelegate.swift in Sources */,
+				C887C7DC2017017000EC681D /* EmojiArtView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
